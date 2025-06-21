@@ -1,0 +1,28 @@
+Frontend 
+
+cd "C:\Users\kassymzhan.nuraliyev\OneDrive - KAZ Minerals Management LLP\Desktop\KMM IT\satty_website-master\Frontend"
+
+npm run dev
+
+
+Backend 
+
+cd "C:\Users\kassymzhan.nuraliyev\OneDrive - KAZ Minerals Management LLP\Desktop\KMM IT\satty_website-master\Backend"
+
+npm start
+
+
+
+Для быстрого запуска СЕГОДНЯ:
+
+Регистрируете домен на kaznic.kz
+Создаете аккаунт на vercel.com
+Загружаете код на GitHub
+Подключаете домен к Vercel
+Сайт работает 24/7!
+
+
+
+#0099B1 
+
+#D9B075
