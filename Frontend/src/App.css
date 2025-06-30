@@ -1,8 +1,7 @@
-/* @import url(https://fonts.googleapis.com/css?family=Gabarito:regular,500,600,700,800,900); */
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
 body {
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
 }
 
 .primaryBG {
@@ -43,7 +42,6 @@ header, nav {
     }
 }
 
-/* Если нужны эти стили, раскомментируйте: */
 .slick-slider {
     background-color: aquamarine;
     padding-left: 30px;
@@ -52,12 +50,10 @@ header, nav {
 
 .slick-prev {
     z-index: 1;
-    /* background-color: red !important; */
 }
 
 .slick-next {
     z-index: 1;
-    /* background-color: red !important; */
 }
 
 .slick-dots li button:before {
@@ -68,13 +64,11 @@ header, nav {
 
 .slick-dots li.slick-active button:before {
     color: white !important;
-    /* font-size: 12px !important; */
 }
 
 .heartStar {
     border-radius: 0px 28px 0px 28px;
 }
-
 
 .section-container {
     max-width: 1536px;
