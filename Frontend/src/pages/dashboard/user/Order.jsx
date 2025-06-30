@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import './order.css'
 
 const Order = () => {
-    const { user, loading } = useAuth();
     const token = localStorage.getItem("access_token");
     const { refetch, data: orders = [] } = useQuery({
         queryKey: ["orders", user?.email],
