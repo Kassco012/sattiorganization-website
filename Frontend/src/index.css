@@ -673,3 +673,9 @@
 .homecontainer {
     max-height: 100%;
 }
+
+
+.footer-link button:hover {
+    color: #0099B1 !important;
+    text-decoration: underline;
+}
