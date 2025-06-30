@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'; // Добавьте этот импорт
 import { useLanguage } from '../components/LanguageContext';
 import '../index.css';
 
 export default function Footer() {
     const { t } = useLanguage();
+    const navigate = useNavigate(); // Добавьте эту строку
 
     return (
         <div>
@@ -15,12 +17,10 @@ export default function Footer() {
                                 <div className="col-md-6">
                                     <div className="footer-contact">
                                         <h2 style={{ color: '#0099B1' }}>{t('ourAddress')}</h2>
-                                        <a href=" ">
-                                            <p style={{ color: '#333' }}>
-                                                <i className="fa fa-map-marker" style={{ fontSize: '18px', color: '#0099B1' }}></i>
-                                                г Алматы, Казахстан
-                                            </p>
-                                        </a>
+                                        <p style={{ color: '#333' }}>
+                                            <i className="fa fa-map-marker" style={{ fontSize: '18px', color: '#0099B1' }}></i>
+                                            г Алматы, Казахстан
+                                        </p>
                                         <p style={{ color: '#333' }}>
                                             <i className="fa fa-phone" style={{ fontSize: '20px', color: '#0099B1' }}></i>
                                             +7 778 7575075
@@ -48,15 +48,52 @@ export default function Footer() {
                                 <div className="col-md-6">
                                     <div className="footer-link">
                                         <h2 style={{ color: '#0099B1' }}>{t('mainLinks')}</h2>
-                                        <a href="/" style={{ color: 'white', display: 'block', marginBottom: '8px', textDecoration: 'none' }}>
+                                        {/* Замените <a> на <button> */}
+                                        <button
+                                            onClick={() => navigate('/')}
+                                            style={{
+                                                color: 'white',
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                textDecoration: 'none',
+                                                background: 'none',
+                                                border: 'none',
+                                                cursor: 'pointer',
+                                                textAlign: 'left'
+                                            }}
+                                        >
                                             {t('home')}
-                                        </a>
-                                        <a href="/boxgenie" style={{ color: 'white', display: 'block', marginBottom: '8px', textDecoration: 'none' }}>
+                                        </button>
+                                        <button
+                                            onClick={() => navigate('/boxgenie')}
+                                            style={{
+                                                color: 'white',
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                textDecoration: 'none',
+                                                background: 'none',
+                                                border: 'none',
+                                                cursor: 'pointer',
+                                                textAlign: 'left'
+                                            }}
+                                        >
                                             {t('quickOrder')}
-                                        </a>
-                                        <a href="/contact" style={{ color: 'white', display: 'block', marginBottom: '8px', textDecoration: 'none' }}>
+                                        </button>
+                                        <button
+                                            onClick={() => navigate('/contact')}
+                                            style={{
+                                                color: 'white',
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                textDecoration: 'none',
+                                                background: 'none',
+                                                border: 'none',
+                                                cursor: 'pointer',
+                                                textAlign: 'left'
+                                            }}
+                                        >
                                             {t('contacts')}
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -67,18 +104,19 @@ export default function Footer() {
                                 <div className="form">
                                     <p style={{ color: '#333' }}>
                                         {t('dontHesitate')}{' '}
-                                        <a href="/contact">
-                                            <button style={{
+                                        <button
+                                            onClick={() => navigate('/contact')}
+                                            style={{
                                                 backgroundColor: '#0099B1',
                                                 color: 'white',
                                                 border: 'none',
                                                 padding: '8px 16px',
                                                 borderRadius: '4px',
                                                 cursor: 'pointer'
-                                            }}>
-                                                {t('contactUs')}
-                                            </button>
-                                        </a>
+                                            }}
+                                        >
+                                            {t('contactUs')}
+                                        </button>
                                     </p>
                                 </div>
                             </div>
@@ -88,7 +126,7 @@ export default function Footer() {
                 <div className="copyright">
                     <div className="container">
                         <p style={{ color: 'white' }}>
-                            Copyright &copy; <a href="/" style={{ color: '#D9B075', textDecoration: 'none' }}>Sátti Organization</a>, All Rights Reserved.
+                            Copyright &copy; <button onClick={() => navigate('/')} style={{ color: '#D9B075', textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer' }}>Sátti Organization</button>, All Rights Reserved.
                         </p>
                         <p style={{ color: 'white' }}>Designed By KassymNur</p>
                     </div>
