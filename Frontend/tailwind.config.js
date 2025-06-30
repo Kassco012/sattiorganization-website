@@ -3,30 +3,65 @@ export default {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
-        './pages/**/*.{html,js}',
     ],
     theme: {
         extend: {
             colors: {
-                "Green": "#ffb534", // Изменено с #ffb534 на темно-бордовый
-                "secondary": "#555",
-                "primaryBG": "#ffff",
-                "buffetBg": "#f3f1ed",
-                "red": "#8B0000", // Изменено с #73bf10 на темно-бордовый
-                "hover": "#660000", // Изменено с #46b141 на темно-бордовый для hover
-                // Добавляем дополнительные бордовые оттенки
-                "burgundy": "#8B0000",
-                "burgundy-light": "#A0002A",
-                "burgundy-dark": "#660000",
-                // Новые цвета согласно требованиям
-                "teal": "#0099B1", // заменяет все teal цвета
-                "yellow": "#D9B075", // заменяет все yellow цвета
-                "orange": "#D9B075", // заменяет все orange цвета
+                'palette-main': '#D9B075',
+                'sub-color': '#0099B1',
+                'text-color': '#757575',
+                'bg-color-site': '#ffffff',
             },
             fontFamily: {
-                'great-vibes': ['Great Vibes', 'cursive']
+                'poppins': ['Poppins', 'sans-serif'],
+                'gabarito': ['Gabarito', 'sans-serif'],
+                'great-vibes': ['Great Vibes', 'cursive'],
+            },
+            animation: {
+                'bounce': 'bounce 1.75s infinite',
+                'typing': 'typing 2s steps(20, end)',
+                'blink-caret': 'blink-caret .75s step-end infinite',
+            },
+            keyframes: {
+                bounce: {
+                    '0%, 20%, 50%, 80%, 100%': {
+                        transform: 'translateY(0)',
+                    },
+                    '40%': {
+                        transform: 'translateY(-20px)',
+                    },
+                    '60%': {
+                        transform: 'translateY(-10px)',
+                    },
+                },
+                typing: {
+                    from: {
+                        width: '0'
+                    },
+                    to: {
+                        width: '100%'
+                    }
+                },
+                'blink-caret': {
+                    'from, to': {
+                        'border-color': 'transparent'
+                    },
+                    '50%': {
+                        'border-color': 'white'
+                    }
+                }
+            },
+            screens: {
+                'xs': '475px',
+            },
+            spacing: {
+                '18': '4.5rem',
+                '88': '22rem',
+            },
+            borderRadius: {
+                '4xl': '2rem',
             }
         },
     },
-    plugins: [require("daisyui")],
+    plugins: [],
 }

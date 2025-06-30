@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+echo "*.zip" >> .gitignore
+echo "*.txt" >> .gitignore  
+echo ".vs/" >> .gitignore
+echo "*.pdf" >> .gitignore
+git add .gitignore
