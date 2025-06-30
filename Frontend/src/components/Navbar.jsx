@@ -8,17 +8,22 @@ import { useLanguage } from "../components/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
-    const location = useLocation();
-    const [isSticky, setSticky] = useState(false);
+    let location;
 
+    try {
+        location = useLocation();
+    } catch (error) {
+        location = { pathname: '/' };
+    }
+
+    const [isSticky, setSticky] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const { t } = useLanguage();
 
-
-    const user = null; 
-    const isAdmin = false; 
-    const cart = []; 
+    const user = null;
+    const isAdmin = false;
+    const cart = [];
 
     const toggleMenu = () => {
         setIsMenuOpen((prev) => !prev);
@@ -59,13 +64,13 @@ const Navbar = () => {
     }, []);
 
     const navItems = [
-        { path: "", label: t('home') },
-        { path: "menu", label: t('menu') },
-        { path: "about", label: t('about') },
-        { path: "boxgenie", label: t('quickOrder') },
-        { path: "calculator", label: t('calculator') },
-        { path: "reviews", label: t('reviews') },
-        { path: "contact", label: t('contacts') },
+        { path: "/", label: t('home') },
+        { path: "/menu", label: t('menu') },
+        { path: "/about", label: t('about') },
+        { path: "/boxgenie", label: t('quickOrder') },
+        { path: "/calculator", label: t('calculator') },
+        { path: "/reviews", label: t('reviews') },
+        { path: "/contact", label: t('contacts') },
     ];
 
     const serviceItems = [
@@ -75,17 +80,22 @@ const Navbar = () => {
         { path: "/service/delivery", label: t('delivery') },
     ];
 
+    const isActivePath = (path) => {
+        if (path === "/" && location.pathname === "/") return true;
+        return path !== "/" && location.pathname === path;
+    };
+
     return (
         <header
             id="navbar"
-            className={`max-w-screen-2xl container1 mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out ${isSticky ? "sticky-bg-white" : "sticky-bg-white"}`}
+            className={`w-full mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out z-50 ${isSticky ? "sticky-bg-white" : "sticky-bg-white"}`}
         >
             <div
-                className={`navbar xl:px-24 ${isSticky
+                className={`navbar px-4 sm:px-6 lg:px-24 ${isSticky
                     ? "shadow-md bg-white transition-all duration-300 ease-in-out text-black font-semibold"
                     : ""
                     }`}
-                style={{ maxWidth: "100%", width: "100%", maxHeight: "14.5vh" }}
+                style={{ width: "100%", minHeight: "60px" }}
             >
                 <div className="navbar-start">
                     <div className="dropdown justify-between">
@@ -112,20 +122,18 @@ const Navbar = () => {
                         </label>
                         <ul
                             tabIndex={0}
-                            className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64 space-y-3 text`}
-                            style={{ display: isMenuOpen ? "block" : "none" }}
+                            className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64 space-y-3 overflow-hidden ${isMenuOpen ? "block" : "hidden"}`}
                         >
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <Link
                                         to={item.path}
-                                        className={`text-${isSticky ? "black" : "black"} font-bold text-G hover:bg-transparent ${location.pathname === `/${item.path}` || (item.path === "" && location.pathname === "/") ? "active" : ""
-                                            }`}
+                                        className={`text-${isSticky ? "black" : "black"} font-bold text-G hover:bg-transparent ${isActivePath(item.path) ? "active" : ""}`}
                                         style={{
-                                            color: (location.pathname === `/${item.path}` || (item.path === "" && location.pathname === "/")) ? '#0099B1' : 'inherit'
+                                            color: isActivePath(item.path) ? '#0099B1' : 'inherit'
                                         }}
                                         onMouseEnter={(e) => e.target.style.color = '#0099B1'}
-                                        onMouseLeave={(e) => e.target.style.color = (location.pathname === `/${item.path}` || (item.path === "" && location.pathname === "/")) ? '#0099B1' : '#000'}
+                                        onMouseLeave={(e) => e.target.style.color = isActivePath(item.path) ? '#0099B1' : '#000'}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.label}
@@ -138,7 +146,7 @@ const Navbar = () => {
                         <img
                             src="/logo.png"
                             alt="Sátti Organization"
-                            className="my-2 h-16 md:h-20 lg:h-24 w-auto object-contain"
+                            className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain"
                             id="logoms"
                         />
                     </Link>
@@ -152,7 +160,7 @@ const Navbar = () => {
                                     to={item.path}
                                     className={`text-${isSticky ? "black" : "black"} font-bold rounded-full hover:text-white text-R hover:rounded-full hover:bg-hover px-4 py-2`}
                                     style={{
-                                        color: (location.pathname === `/${item.path}` || (item.path === "" && location.pathname === "/")) ? '#0099B1' : 'inherit',
+                                        color: isActivePath(item.path) ? '#0099B1' : 'inherit',
                                         backgroundColor: 'transparent'
                                     }}
                                 >
@@ -175,8 +183,7 @@ const Navbar = () => {
                         >
                             {t('services')}
                             <FaChevronDown
-                                className={`transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''
-                                    }`}
+                                className={`transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
                             />
                         </button>
 
